@@ -1019,6 +1019,37 @@ public class BacklogClientImpl extends BacklogClientBase implements BacklogClien
     }
 
     @Override
+    public ResponseList<Team> getTeams() throws BacklogException {
+        return factory.createTeamList(get(buildEndpoint("teams")));
+    }
+
+    @Override
+    public ResponseList<Team> getTeams(OffsetParams params) throws BacklogException {
+        return factory.createTeamList(get(buildEndpoint("teams"), params));
+    }
+
+    @Override
+    public Team createTeam(CreateTeamParams params) throws BacklogException {
+        return factory.createTeam(post(buildEndpoint("teams"), params));
+    }
+
+    @Override
+    public Team getTeam(Object teamId) throws BacklogException {
+        return factory.createTeam(get(buildEndpoint("teams/" + teamId)));
+    }
+
+    @Override
+    public Team updateTeam(UpdateTeamParams params) throws BacklogException {
+        return factory.createTeam(patch(buildEndpoint("teams/" + params.getTeamId()), params));
+    }
+
+    @Override
+    public Team deleteTeam(Object teamId) throws BacklogException {
+        return factory.createTeam(delete(buildEndpoint("teams/" + teamId)));
+    }
+
+
+    @Override
     public ResponseList<Webhook> getWebhooks(Object projectIdOrKey) throws BacklogException {
         return factory.createWebhookList(get(buildEndpoint("projects/" + projectIdOrKey + "/webhooks")));
     }

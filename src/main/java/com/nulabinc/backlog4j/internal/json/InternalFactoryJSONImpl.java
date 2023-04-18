@@ -477,6 +477,24 @@ public class InternalFactoryJSONImpl implements InternalFactory {
     }
 
     @Override
+    public Team createTeam(BacklogHttpResponse res) throws BacklogException {
+        return createTeam(res.asString());
+    }
+
+    public Team createTeam(String resStr) throws BacklogException {
+        return createObject(resStr, Team.class, TeamJSONImpl.class);
+    }
+
+    @Override
+    public ResponseList<Team> createTeamList(BacklogHttpResponse res) throws BacklogException {
+        return createTeamList(res.asString());
+    }
+
+    public ResponseList<Team> createTeamList(String resStr) throws BacklogException {
+        return createObjectList(resStr, Team.class, TeamJSONImpl[].class);
+    }
+
+    @Override
     public ResponseList<Attachment> createAttachmentList(BacklogHttpResponse res) throws BacklogException {
         return createObjectList(res.asString(), Attachment.class, AttachmentJSONImpl[].class);
     }

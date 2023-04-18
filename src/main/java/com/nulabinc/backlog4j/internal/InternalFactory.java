@@ -122,6 +122,10 @@ public interface InternalFactory {
 
     ResponseList<Group> createGroupList(BacklogHttpResponse res) throws BacklogException;
 
+    Team createTeam(BacklogHttpResponse res) throws BacklogException;
+
+    ResponseList<Team> createTeamList(BacklogHttpResponse res) throws BacklogException;
+
     ResponseList<Webhook> createWebhookList(BacklogHttpResponse res) throws BacklogException;
 
     Webhook createWebhook(BacklogHttpResponse res) throws BacklogException;
